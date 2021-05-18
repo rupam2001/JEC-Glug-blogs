@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import siteInfo from "../data/siteinfo.json"
+import siteInfo from "../public/data/siteinfo.json"
 import Layout from '../components/layout'
 
 export default function Home() {
@@ -19,9 +19,6 @@ export default function Home() {
           </div>
         </div>
       </Layout>
-
-
-
     </div>
   )
 }

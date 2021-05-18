@@ -1,23 +1,12 @@
 import React from 'react';
 import PostItem from '../components/postItem';
 import Layout from "../components/layout"
+import { fetchPosts } from '../utils/fetchPosts';
 
 export async function getStaticProps(context) {
-
-    const fs = require("fs")
-    const dirPath = "./data/blogs/"
-    const directories = fs.readdirSync(dirPath)
-
-    let posts = []
-
-    directories.forEach(dir => {
-        const meta = fs.readFileSync(dirPath + dir + "/meta.json", "utf8")
-        posts.push(JSON.parse(meta))
-    })
-
-
+    const res = fetchPosts()
     return {
-        props: { posts }
+        props: { posts: res }
     }
 }
 

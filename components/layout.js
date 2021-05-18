@@ -6,9 +6,7 @@ export default function Layout({ children }) {
     return (
         <div>
             <HamBurgerMenu />
-
             {children}
-            {/* <Footer /> */}
         </div>
     )
 }

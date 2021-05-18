@@ -17,7 +17,7 @@ a {
   background-color: transparent;
   z-index: 99999999;
   position:  sticky;
-  top: 0;
+  top: 0; 
 }
 
 .menu {
@@ -123,8 +123,35 @@ a {
     font-size: 3.5rem;
     color: rgb(22, 22, 22);
   }
-
+  .p-container{
+    padding: 0.5rem;
+    display: flex;
+  }
+  .p-html img{
+   
+  }
 }
+
+@media only screen and (min-width: 1000px) {
+  .p-html{
+    padding: 0.5rem;
+    display: flex;
+    width: 50vw;
+    flex-direction: column;
+  }
+  .p-container{
+    height: 100%;
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    /* background-color: red; */
+    align-items: center;
+  }
+  .post-container h2{
+      font-size: 2.4rem;
+  }
+}
+
 
 
 .bgs-container{
@@ -151,4 +178,15 @@ a {
 .post-meta{
   display: flex;
   justify-content: flex-end;
+}
+.p-container{
+  padding: 0.5rem;
+  display: flex;
+  width: 50vw;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* flex-direction: column; */
+}
+.p-html img{
+  
 }
