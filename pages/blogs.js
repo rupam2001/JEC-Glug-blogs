@@ -2,6 +2,7 @@ import React from 'react';
 import PostItem from '../components/postItem';
 import Layout from "../components/layout"
 import { fetchPosts } from '../utils/fetchPosts';
+import Head from 'next/head'
 
 export async function getStaticProps(context) {
     const res = fetchPosts()
@@ -16,15 +17,20 @@ export default function Blogs(props) {
 
 
     return (
-        <Layout>
+        <>
+            <Head>
+                <meta name="viewport" content="width=device-width, user-scalable=no" />
+            </Head>
+            <Layout>
 
-            <div className="bgs-container">
-                {
-                    props.posts.map(p => (
-                        <PostItem {...p} key={p.id} />
-                    ))
-                }
-            </div>
-        </Layout>
+                <div className="bgs-container">
+                    {
+                        props.posts.map(p => (
+                            <PostItem {...p} key={p.id} />
+                        ))
+                    }
+                </div>
+            </Layout>
+        </>
     )
 }

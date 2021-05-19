@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import Footer from '../../components/footer';
+import HamBurgerMenu from '../../components/hamburgerMenu';
 import Layout from '../../components/layout';
 import { fetchPostContent } from '../../utils/fetchPostContent';
 import { loadingBarRef } from '../_app';
+import Head from 'next/head'
+
 
 
 export const getStaticProps = async ({ params }) => {
@@ -24,23 +27,30 @@ export const getStaticPaths = async () => {
 
 export default function Post(props) {
     useEffect(() => {
-        let div = document.getElementById("posts-html")
-        let images = div.getElementsByTagName("img")
-        for (let i = 0; i < images.length; i++) {
-            let oldSrc = images[i].src;
-            let splitted = window.location.href.split("/")
-            let cur_url = ""
-            for (let i = 0; i < splitted.length - 2; i++) {
-                cur_url += splitted[i] + "/"
-            }
-            let newSrc = cur_url + "api/blogsapi?slug=" + props.slug + "&img=" + oldSrc.split("/").reverse()[0]
-            images[i].src = newSrc
-        }
-        loadingBarRef.current.complete()
+        try {
 
+            let div = document.getElementById("posts-html")
+            let images = div.getElementsByTagName("img")
+            for (let i = 0; i < images.length; i++) {
+                let oldSrc = images[i].src;
+                let splitted = window.location.href.split("/")
+                let cur_url = ""
+                for (let i = 0; i < splitted.length - 2; i++) {
+                    cur_url += splitted[i] + "/"
+                }
+                let newSrc = cur_url + "api/blogsapi?slug=" + props.slug + "&img=" + oldSrc.split("/").reverse()[0]
+                images[i].src = newSrc
+            }
+            loadingBarRef.current.complete()
+
+        } catch (e) { }
     }, [])
     return (
         <>
+            <Head>
+                <meta name="viewport" content="width=device-width, user-scalable=no" />
+            </Head>
+            <HamBurgerMenu />
             <div className="p-container">
                 <div dangerouslySetInnerHTML={{ __html: props.html }} id="posts-html" className="p-html">
                 </div>
