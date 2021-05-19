@@ -7,7 +7,7 @@ import { fetchPostContent } from '../../utils/fetchPostContent';
 export const getStaticProps = async ({ params }) => {
     const slug = params.post;
     const _ = fetchPostContent(slug)
-    const html = await fetch("http://192.168.37.87:3000/api/fetchblogContent?slug=" + slug, { method: "GET" }).then(res => res.text())
+    const html = await fetch("https://jec-glug-blogs.vercel.app/api/fetchblogContent?slug=" + slug, { method: "GET" }).then(res => res.text())
 
     const finalHtml = html
     return {
