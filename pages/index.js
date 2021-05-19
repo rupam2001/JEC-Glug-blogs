@@ -10,7 +10,6 @@ export default function Home() {
         <title>{siteInfo.site_title}</title>
         <meta name="description" content={siteInfo.about} />
         <meta name="viewport" content="width=device-width, user-scalable=no" />
-
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
