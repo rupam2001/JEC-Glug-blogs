@@ -21,7 +21,7 @@ export default function Blogs(props) {
             <div className="bgs-container">
                 {
                     props.posts.map(p => (
-                        <PostItem {...p} />
+                        <PostItem {...p} key={p.id} />
                     ))
                 }
             </div>

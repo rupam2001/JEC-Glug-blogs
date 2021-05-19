@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import siteInfo from "../public/static/siteinfo.json"
 import Layout from '../components/layout'
+import Footer from '../components/footer'
 
 export default function Home() {
   return (
@@ -8,6 +9,8 @@ export default function Home() {
       <Head>
         <title>{siteInfo.site_title}</title>
         <meta name="description" content={siteInfo.about} />
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>

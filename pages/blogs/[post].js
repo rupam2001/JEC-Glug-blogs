@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import Footer from '../../components/footer';
 import Layout from '../../components/layout';
 import { fetchPostContent } from '../../utils/fetchPostContent';
+import { loadingBarRef } from '../_app';
 
 
 export const getStaticProps = async ({ params }) => {
     const slug = params.post;
     const _ = fetchPostContent(slug)
     const html = await fetch("https://jec-glug-blogs.vercel.app/api/fetchblogContent?slug=" + slug, { method: "GET" }).then(res => res.text())
-
-    const finalHtml = html
     return {
-        props: { html: finalHtml, slug }
+        props: { html, slug }
     }
 };
 
@@ -33,28 +33,18 @@ export default function Post(props) {
             for (let i = 0; i < splitted.length - 2; i++) {
                 cur_url += splitted[i] + "/"
             }
-
             let newSrc = cur_url + "api/blogsapi?slug=" + props.slug + "&img=" + oldSrc.split("/").reverse()[0]
             images[i].src = newSrc
         }
+        loadingBarRef.current.complete()
 
     }, [])
     return (
         <>
-            <Helmet>
-                <script>
-                    {
-                        `
-                       `
-                    }
-                </script>
-            </Helmet>
-
             <div className="p-container">
                 <div dangerouslySetInnerHTML={{ __html: props.html }} id="posts-html" className="p-html">
                 </div>
             </div>
-
         </>
     )
 }
