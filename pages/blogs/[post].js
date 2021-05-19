@@ -6,7 +6,9 @@ import { fetchPostContent } from '../../utils/fetchPostContent';
 
 export const getStaticProps = async ({ params }) => {
     const slug = params.post;
-    const html = fetchPostContent(slug)
+    const _ = fetchPostContent(slug)
+    const html = await fetch("http://192.168.37.87:3000/api/fetchblogContent?slug=" + slug, { method: "GET" }).then(res => res.text())
+
     const finalHtml = html
     return {
         props: { html: finalHtml, slug }
