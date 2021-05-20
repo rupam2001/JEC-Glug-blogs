@@ -13,7 +13,7 @@ const LOCALENDPOINT = "http://192.168.43.238:3000/api/fetchblogContent?slug="
 export const getStaticProps = async ({ params }) => {
     const slug = params.post;
     const _ = fetchPostContent(slug)
-    const html = await fetch(LOCALENDPOINT + slug, { method: "GET" }).then(res => res.text())
+    const html = await fetch(ENDPOINT + slug, { method: "GET" }).then(res => res.text())
     return {
         props: { html, slug }
     }
