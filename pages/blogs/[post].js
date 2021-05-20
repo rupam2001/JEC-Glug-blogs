@@ -7,12 +7,12 @@ import { fetchPostContent } from '../../utils/fetchPostContent';
 import { loadingBarRef } from '../_app';
 import Head from 'next/head'
 
-
+const ENDPOINT = "https://jec-glug-blogs.vercel.app/api/fetchblogContent?slug="
 
 export const getStaticProps = async ({ params }) => {
     const slug = params.post;
     const _ = fetchPostContent(slug)
-    const html = await fetch("https://jec-glug-blogs.vercel.app/api/fetchblogContent?slug=" + slug, { method: "GET" }).then(res => res.text())
+    const html = await fetch("http://192.168.37.87:3000/api/fetchblogContent?slug=" + slug, { method: "GET" }).then(res => res.text())
     return {
         props: { html, slug }
     }
@@ -40,6 +40,7 @@ export default function Post(props) {
                 }
                 let newSrc = cur_url + "api/blogsapi?slug=" + props.slug + "&img=" + oldSrc.split("/").reverse()[0]
                 images[i].src = newSrc
+                images[i].style.marginTop = "1rem"
             }
             loadingBarRef.current.complete()
 
@@ -51,8 +52,10 @@ export default function Post(props) {
                 <meta name="viewport" content="width=device-width, user-scalable=no" />
             </Head>
             <HamBurgerMenu />
-            <div className="p-container">
-                <div dangerouslySetInnerHTML={{ __html: props.html }} id="posts-html" className="p-html">
+            <div className="p-main">
+                <div className="p-container" dangerouslySetInnerHTML={{ __html: props.html }} id="posts-html">
+                    {/* <div  className="p-html">
+                </div> */}
                 </div>
             </div>
         </>
@@ -67,19 +70,6 @@ function preProccessHtml(html) {
     `
     const pos = html.lastIndexOf("</body>")
     const result = html.slice(0, pos) + script + html.slice(pos, html.length)
-
-    // var xArray; 
-    // var Poses = []
-    // const re = RegExp("<img")
-    // while(xArray = re.exec()) {
-    //     Poses.push(xArray)
-    // }
-
-
-
-
-
-
 
     return script
 }

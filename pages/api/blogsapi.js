@@ -9,7 +9,7 @@ export default (req, res) => {
 
     var s = fs.createReadStream(file);
     s.on('open', function () {
-        res.setHeader('Content-Type', "text/jpeg");
+        res.setHeader('Content-Type', "image/" + query.img.split(".").reverse()[0]);
         s.pipe(res);
     });
     s.on('error', function (e) {
