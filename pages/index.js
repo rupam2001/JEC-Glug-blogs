@@ -3,6 +3,7 @@ import siteInfo from "../public/static/siteinfo.json"
 import Layout from '../components/layout'
 import Footer from '../components/footer'
 import Link from 'next/link'
+import { Helmet } from 'react-helmet'
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
+
       </Layout>
     </div>
   )

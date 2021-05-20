@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import { fetchPosts } from '../utils/fetchPosts';
 import Head from 'next/head'
 import HamBurgerMenu from '../components/hamburgerMenu';
+import Footer from '../components/footer';
 
 export async function getStaticProps(context) {
     const res = fetchPosts()
@@ -30,7 +31,6 @@ export default function Blogs(props) {
                     ))
                 }
             </div>
-
         </>
     )
 }
