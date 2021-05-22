@@ -2,7 +2,9 @@ import Link from 'next/link';
 import React from 'react';
 import { loadingBarRef } from '../pages/_app';
 
-export default function PostItem({ title, author, date, id }) {
+const MAXTAGNUM = 4
+
+export default function PostItem({ title, author, date, id, tags }) {
     return (
         <Link href={"/blogs/" + id}>
             <div className="post-container" onClick={() => loadingBarRef.current.continuousStart()}>
@@ -12,6 +14,16 @@ export default function PostItem({ title, author, date, id }) {
                 <div className="post-meta">
                     <p>{author}</p>
                     <p>@{date}</p>
+                </div>
+                <div className="post-tag-box">
+                    {
+                        tags.slice(0, MAXTAGNUM).map(t => (
+                            <span key={t}>{t}</span>
+                        ))
+                    }
+                    {
+                        tags.length > MAXTAGNUM && <span>...</span>
+                    }
                 </div>
             </div>
         </Link>

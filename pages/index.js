@@ -18,13 +18,15 @@ export default function Home() {
         <div className="container">
           <div>
             <h1>Welcome to Glug blogs</h1>
-            <p>@JEC</p>
+            <p>Welcome to JEC Glug</p>
             <h3>Blogs Written by memebers of Glug</h3>
-            <Link href="/blogs">
-              <a>
-                <h3 className="read-blg">Read Blogs</h3>
-              </a>
-            </Link>
+            <div className="read-box">
+              <Link href="/blogs">
+                <a>
+                  <h3 className="read-blg">Read Blogs</h3>
+                </a>
+              </Link>
+            </div>
           </div>
         </div>
 

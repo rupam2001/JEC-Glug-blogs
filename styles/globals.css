@@ -132,42 +132,40 @@ a {
   .p-main{
     position: absolute;
   }
+  div{
+    word-wrap: break-word;
+    white-space: initial;
+  }
   .p-container{
     padding: 0.5rem;
     max-width: 95vw;
-    /* background-color: red; */
-    /* word-wrap: break-word; */
+    word-wrap: break-word;
     flex-wrap: wrap ;
-
-    /* background-color: rebeccapurple; */
     display: flex;
   
   }
-  .p-html{
-    /* padding: 1rem; */
-    /* background-color: red; */
-
-
-  }
   .p-container img{
-    max-width: 96vw;
-
-    /* overflow: hidden; */
-    /* overflow: hidden; */
-    /* max-width: 80%; */
-   
+    max-width: 96vw;   
     max-height: 85%;
   }
-  .p-html span{
-    /* zoom: 3; */
-    max-width: 95vw;
-   /* color: red; */
-  }
 }
-.read-blg{
-  text-decoration: underline;
-  float: right;
-  margin-right: 1rem;
+.read-box{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+}
+.read-blg{ 
+  /* margin-right: 1rem; */
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+  transition: all 0.3s ease-in-out;
+  
+}
+.read-blg:active{
+  transform: scale(0.9);
 }
 
 @media only screen and (min-width: 1000px) {
@@ -204,6 +202,7 @@ a {
   .post-container{
     max-width: 60vw;
   }
+  
 }
 .post-container h2{
   /* font-size: 2.4rem; */
@@ -249,14 +248,6 @@ a {
   margin-top: -1rem;
   
 }
-/* .p-container{
-  padding: 0.5rem;
-  display: flex;
-  width: 100%;
-  max-height: 100vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-} */
 
 
 
@@ -274,5 +265,44 @@ a {
     zoom: 2;
 }
 
+.post-tag-box{
+  /* background-color: red; */
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+}
+.post-tag-box span{
+  color: rgb(194, 219, 219);
+  margin-left: 0.5rem;
+  background-color: whitesmoke;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  font-size: small;
+
+}
 
 
+.hm-box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 1rem;
+}
+.hm-box i{
+  font-size: x-large;
+  color: gray;
+  margin-left: 0.2rem;
+  cursor: pointer;
+}
+.post-searh-box{
+  display: flex;
+  justify-content: center;
+}
+.post-searh-box input{
+  width: 40vw;
+  padding: 0.4rem;
+}
+
+.post-container input:focus{
+  width: 40vw;
+}

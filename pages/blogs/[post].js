@@ -28,6 +28,7 @@ export const getStaticPaths = async () => {
 
 export default function Post(props) {
     useEffect(() => {
+        //code to replace the images src to with the blogsapi
         try {
 
             let div = document.getElementById("posts-html")
@@ -52,16 +53,10 @@ export default function Post(props) {
             <Head>
                 <meta name="viewport" content="width=device-width, user-scalable=no" />
             </Head>
-
             <HamBurgerMenu />
             <div className="p-main">
-                <div className="p-container" dangerouslySetInnerHTML={{ __html: props.html }} id="posts-html">
-                    {/* <div  className="p-html">
-                </div> */}
-                </div>
+                <div className="p-container" dangerouslySetInnerHTML={{ __html: props.html }} id="posts-html" />
             </div>
-
-
         </>
     )
 }

@@ -1,5 +1,10 @@
 {
     "author": "Himraj Gogoi",
     "date": "2021-05-20",
-    "title": "CUSTOMIZING DEFAULT USER MODEL IN DJANGO"
+    "title": "CUSTOMIZING DEFAULT USER MODEL IN DJANGO",
+    "tags": [
+        "python",
+        "webdev",
+        "django"
+    ]
 }
