@@ -6,5 +6,6 @@
         "python",
         "webdev",
         "django"
-    ]
+    ],
+    "type": "html"
 }

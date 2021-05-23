@@ -6,10 +6,17 @@ export default function HamBurgerMenu(props) {
     const [isOpen, setIsOpen] = useState(false)
     const mainRef = useRef(null)
     const [postsData, setPostsData] = useState(props.postsData)
+    const [tags, setTags] = useState([])
+    const [currentActiveTag, setCurrentActiveTag] = useState("All")
+
 
     useEffect(() => {
-        setPostsData(props.postsData)
+        if (props.postsData) {
+            setPostsData(props.postsData)
+            setTags(["All", ...getUniqueTags(props.postsData)])
+        }
     }, [props])
+
 
     const handleHamburgerClick = () => {
         let btn = document.getElementById("hm-btn")
@@ -31,23 +38,43 @@ export default function HamBurgerMenu(props) {
     const [searchItem, setSearchItem] = useState(null)
     const handleSearchSubmit = (e) => {
         e.preventDefault();
-        console.log(postsData, searchItem)
+        search(searchItem)
+    }
+    const search = (itemToSearch) => {
         let res = []
         for (let i = 0; i < postsData.length; i++) {
             const { tags } = postsData[i];
-            // console.log(tags)
-            // continue
-
-            if ([...tags].indexOf(searchItem.toLowerCase()) != -1
-                || postsData[i].title.toLowerCase().indexOf(searchItem.toLowerCase()) != -1
-                || postsData[i].author.toLowerCase().indexOf(searchItem.toLowerCase()) != -1
+            if ([...tags].indexOf(itemToSearch.toLowerCase()) != -1
+                || postsData[i].title.toLowerCase().indexOf(itemToSearch.toLowerCase()) != -1
+                || postsData[i].author.toLowerCase().indexOf(itemToSearch.toLowerCase()) != -1
             ) {
                 res.push(postsData[i]);
             }
-
         }
         props.searchResultCallback(res)
     }
+    const getUniqueTags = (allPosts) => {
+        let tagsMap = {}
+        allPosts.forEach(({ tags }) => {
+            tags.forEach(t => {
+                if (t in tagsMap == false)
+                    tagsMap[t] = true;
+            })
+        })
+        let res = []
+        for (const key in tagsMap)
+            res.push(key)
+        return res
+    }
+    const handleTagClick = (t) => {
+        setCurrentActiveTag(t)
+        if (t == "All") {
+            props.searchResultCallback(postsData)
+        }
+        search(t)
+    }
+
+
 
     return (
         <div className="hm-main" ref={mainRef}>
@@ -61,9 +88,18 @@ export default function HamBurgerMenu(props) {
                 </button>
                 {postsData && <div className="post-searh-box">
                     <form onSubmit={handleSearchSubmit}>
-                        <input placeholder="search by title, author, tag" onChange={(e) => setSearchItem(e.target.value)} />
+                        <input placeholder="Search anything" onChange={(e) => setSearchItem(e.target.value)} />
                     </form>
                 </div>}
+            </div>
+            <div className="post-tag-main">
+                {
+                    tags.map(t => (
+                        <div key={t} className={currentActiveTag == t ? "post-tag-box-active" : "post-tag-box"} onClick={() => handleTagClick(t)}>
+                            <span>{t}</span>
+                        </div>)
+                    )
+                }
             </div>
             {
                 isOpen &&

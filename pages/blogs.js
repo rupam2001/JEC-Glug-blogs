@@ -14,7 +14,7 @@ export async function getStaticProps(context) {
 }
 
 const ENDPOINT = "https://jec-glug-blogs.vercel.app/api"
-const LOCALENDPOINT = "http://192.168.43.238:3000/api"
+const LOCALENDPOINT = "http://192.168.37.87:3000/api"
 
 export default function Blogs(props) {
     const originalPostsRef = useRef(null)
@@ -26,16 +26,18 @@ export default function Blogs(props) {
     }, [])
     const fetchPostsAsync = async () => {
         try {
-
             const res = await fetch(ENDPOINT + "/fetchblogs", { method: "GET" }).then(r => r.json())
             setPosts(res)
-            console.log(res)
+            setTags(getUniqueTags(res))
         } catch (error) {
-            console.log(error)
         }
-
-
     }
+
+
+
+
+
+
 
     useEffect(() => {
         if (searchResPosts.length != 0) {
@@ -51,6 +53,8 @@ export default function Blogs(props) {
                 <meta name="viewport" content="width=device-width, user-scalable=no" />
             </Head>
             <HamBurgerMenu searchResultCallback={setSearchResPosts} postsData={posts} />
+
+
             <div className="bgs-container" ref={originalPostsRef}>
                 {
                     props.posts.map(p => (

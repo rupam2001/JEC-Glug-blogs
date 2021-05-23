@@ -4,9 +4,9 @@ import { loadingBarRef } from '../pages/_app';
 
 const MAXTAGNUM = 4
 
-export default function PostItem({ title, author, date, id, tags }) {
+export default function PostItem({ title, author, date, id, tags, type }) {
     return (
-        <Link href={"/blogs/" + id}>
+        <Link href={handleRoutingPath(type) + id}>
             <div className="post-container" onClick={() => loadingBarRef.current.continuousStart()}>
                 <div style={{ width: "100%" }}>
                     <h2 >{title}</h2>
@@ -28,4 +28,11 @@ export default function PostItem({ title, author, date, id, tags }) {
             </div>
         </Link>
     )
+}
+
+const handleRoutingPath = (type) => {
+    if (type == "html")
+        return "/blogs/"
+    if (type == "md")
+        return "/blogsmd/"
 }

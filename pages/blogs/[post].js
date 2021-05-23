@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Footer from '../../components/footer';
 import HamBurgerMenu from '../../components/hamburgerMenu';
@@ -6,14 +6,15 @@ import Layout from '../../components/layout';
 import { fetchPostContent } from '../../utils/fetchPostContent';
 import { loadingBarRef } from '../_app';
 import Head from 'next/head'
+import decodeSlug from '../../utils/decodeSlug';
 
 const ENDPOINT = "https://jec-glug-blogs.vercel.app/api/fetchblogContent?slug="
-const LOCALENDPOINT = "http://192.168.43.238:3000/api/fetchblogContent?slug="
+const LOCALENDPOINT = "http://192.168.37.87:3000/api/fetchblogContent?slug="
 
 export const getStaticProps = async ({ params }) => {
     const slug = params.post;
     const _ = fetchPostContent(slug)
-    const html = await fetch(ENDPOINT + slug, { method: "GET" }).then(res => res.text())
+    const html = await fetch(ENDPOINT + slug + "&type=html", { method: "GET" }).then(res => res.text())
     return {
         props: { html, slug }
     }
@@ -27,10 +28,10 @@ export const getStaticPaths = async () => {
 };
 
 export default function Post(props) {
+
     useEffect(() => {
         //code to replace the images src to with the blogsapi
         try {
-
             let div = document.getElementById("posts-html")
             let images = div.getElementsByTagName("img")
             for (let i = 0; i < images.length; i++) {
@@ -45,7 +46,6 @@ export default function Post(props) {
                 images[i].style.marginTop = "1rem"
             }
             loadingBarRef.current.complete()
-
         } catch (e) { }
     }, [])
     return (
@@ -56,19 +56,13 @@ export default function Post(props) {
             <HamBurgerMenu />
             <div className="p-main">
                 <div className="p-container" dangerouslySetInnerHTML={{ __html: props.html }} id="posts-html" />
+
             </div>
         </>
     )
 }
 
-function preProccessHtml(html) {
-    const script = `
-    <script>
-        alert("Script Embbeded!");
-    </script>
-    `
-    const pos = html.lastIndexOf("</body>")
-    const result = html.slice(0, pos) + script + html.slice(pos, html.length)
+const preProccessImagesForGoogleDocHtml = () => {
 
-    return script
+
 }

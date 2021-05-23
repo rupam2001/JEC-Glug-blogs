@@ -306,3 +306,42 @@ a {
 .post-container input:focus{
   width: 40vw;
 }
+.p-container-md{
+  padding: 0.5rem;
+}
+.post-tag-main{
+  display: flex;
+  overflow-x: scroll;
+}
+.post-tag-main span{
+  font-size: medium;
+}
+
+.post-tag-main::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.post-tag-main {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.active{
+  color: red;
+}
+
+.post-tag-box-active{
+  /* background-color: red; */
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+}
+.post-tag-box-active span{
+  color: rgb(92, 182, 243);
+  margin-left: 0.5rem;
+  background-color: whitesmoke;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  font-size: medium;
+
+}
