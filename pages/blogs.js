@@ -54,24 +54,26 @@ export default function Blogs(props) {
             </Head>
             <HamBurgerMenu searchResultCallback={setSearchResPosts} postsData={posts} />
 
-
-            <div className="bgs-container" ref={originalPostsRef}>
-                {
-                    props.posts.map(p => (
-                        <PostItem {...p} key={p.id} />
-                    ))
-                }
-            </div>
-            {
-                searchResPosts.length != 0 &&
-                <div className="bgs-container" >
+                <div className="container" ref={originalPostsRef}>
+                    <div className="row row-blogs">
                     {
-                        searchResPosts.map(p => (
+                        props.posts.map(p => (
                             <PostItem {...p} key={p.id} />
                         ))
                     }
+                    </div>
                 </div>
-            }
-        </>
+
+                {
+                    searchResPosts.length != 0 &&
+                    <div className="bgs-container" >
+                        {
+                            searchResPosts.map(p => (
+                                <PostItem {...p} key={p.id} />
+                            ))
+                        }
+                    </div>
+                }
+            </>
     )
 }

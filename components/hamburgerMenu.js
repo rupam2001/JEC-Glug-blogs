@@ -77,7 +77,7 @@ export default function HamBurgerMenu(props) {
 
 
     return (
-        <div className="hm-main" ref={mainRef}>
+        <div className="container hm-main" ref={mainRef}>
             <div className="hm-box">
                 <button className="menu" id="hm-btn" onClick={handleHamburgerClick} aria-label="Main Menu">
                     <svg width="60" height="60" viewBox="0 0 100 100">
@@ -86,9 +86,12 @@ export default function HamBurgerMenu(props) {
                         <path className="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
                     </svg>
                 </button>
-                {postsData && <div className="post-searh-box">
+                {postsData && 
+                <div className="post-searh-box">
                     <form onSubmit={handleSearchSubmit}>
-                        <input placeholder="Search anything" onChange={(e) => setSearchItem(e.target.value)} />
+                        <div class="form-group">
+                            <input placeholder="Search anything" class="form-control" onChange={(e) => setSearchItem(e.target.value)} />
+                        </div>
                     </form>
                 </div>}
             </div>
