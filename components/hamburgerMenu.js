@@ -89,8 +89,8 @@ export default function HamBurgerMenu(props) {
                 {postsData && 
                 <div className="post-searh-box">
                     <form onSubmit={handleSearchSubmit}>
-                        <div class="form-group">
-                            <input placeholder="Search anything" class="form-control" onChange={(e) => setSearchItem(e.target.value)} />
+                        <div className="form-group">
+                            <input placeholder="Search anything" className="form-control" onChange={(e) => setSearchItem(e.target.value)} />
                         </div>
                     </form>
                 </div>}

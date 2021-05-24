@@ -4,13 +4,13 @@ export default function Footer() {
         <div>
             <div className="ft-icon-container">
                 <a href="https://www.facebook.com/jec.glug" target="_blank" data-aos="zoom-in">
-                    <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                <button type="button" class="btn btn-default btn-small"><i class="fa fa-facebook"></i></button>
                 </a>
                 <a href="https://www.instagram.com/jecglug/" target="_blank" data-aos="zoom-in">
-                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                <button type="button" class="btn btn-default btn-small"><i class="fa fa-instagram"></i></button>
                 </a>
                 <a href="https://www.linkedin.com/school/jec-glug/" target="_blank" data-aos="zoom-in">
-                    <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                <button type="button" class="btn btn-default btn-small"><i class="fa fa-linkedin"></i></button>
                 </a>
             </div>
         </div>
