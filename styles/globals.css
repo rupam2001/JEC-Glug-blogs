@@ -344,3 +344,22 @@ h2 {
     margin-left: -0.9em;
   }
 }
+
+
+blockquote {
+  color: rgb(110, 110, 110);
+  margin: 0;
+  padding: 0.01rem;
+  
+  padding-left: 2em;
+  background-color: rgba(243, 243, 243, 0.521);
+  border-left: 0.5em #eee solid;
+  min-height: 2rem;
+}
+
+.md-code{
+  max-height: inherit;
+  font-size: 12px;
+  overflow-x: auto;
+  
+}

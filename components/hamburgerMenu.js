@@ -21,6 +21,7 @@ export default function HamBurgerMenu(props) {
     btn.classList.toggle("opened");
     btn.setAttribute("aria-expanded", btn.classList.contains("opened"));
     setIsOpen(!isOpen);
+    console.log("oyyye")
   };
 
   useEffect(() => {
@@ -45,9 +46,9 @@ export default function HamBurgerMenu(props) {
       if (
         [...tags].indexOf(itemToSearch.toLowerCase()) != -1 ||
         postsData[i].title.toLowerCase().indexOf(itemToSearch.toLowerCase()) !=
-          -1 ||
+        -1 ||
         postsData[i].author.toLowerCase().indexOf(itemToSearch.toLowerCase()) !=
-          -1
+        -1
       ) {
         res.push(postsData[i]);
       }

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import HamBurgerMenu from "../../components/hamburgerMenu";
 import { loadingBarRef } from "../_app";
 import Head from "next/head";
-import ReactMarkdown from "react-markdown";
+
 import styles from "./style.module.css";
+import MarkDown from "../../components/markdown";
 
 // const ENDPOINT = "https://jec-glug-blogs.vercel.app/api/fetchblogContent?slug=";
 const ENDPOINT = "http://localhost:3000/api/fetchblogContent?slug=";
@@ -40,9 +41,8 @@ export default function Post(props) {
       <br />
       <hr />
       <div className="p-main">
-        {/* <div className="p-container" dangerouslySetInnerHTML={{ __html: props.md }} id="posts-html" /> */}
         <div className={`p-container-md ${styles.mdContainer}`}>
-          <ReactMarkdown>{props.md}</ReactMarkdown>
+          <MarkDown markdownText={props.md}></MarkDown>
         </div>
       </div>
     </>
